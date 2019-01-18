@@ -1,23 +1,22 @@
 # Drinkkiarkisto
 
-Drinkkiarkisto on www-sivulla toimiva drinkinhakulomake. 
-Drinkkireseptit kuvaavat cocktaileja ja muita juomasekoituksia. 
-Reseptejä voi hakea juoman nimeen liittyvällä hakusanalla tai jonkin tietyn osa-aineen mukaan. 
-Resepteistä voi pyytää myös listan aakkosjärjestyksen, ainesosan tai juomalajin (alkudrinkki, cocktail, shotti,…) mukaan.
+Drinkkiarkisto on selainpohjaista käyttöliittymää käyttävä drinkinhakusovellus. 
+Drinkkejä ovat cocktailit ja muut juomasekoitukset. 
+Drinkkejä voi hakea juoman nimeen liittyvällä hakusanalla tai jonkin tietyn osa-aineen mukaan. 
+Niitä voi pyytää myös listattuna aakkosjärjestyksen, ainesosan tai juomalajin (alkudrinkki, cocktail, shotti,…) mukaan.
 
-Järjestelmään kirjaudutaan sisään. Samalla hakusanalla voi saada useita eri tuloksia tai 
-samaan juomaan voidaan viitata usealla hakusanalla, koska juomasekoitukset voivat kulkea eri nimillä eri paikoissa.
+Järjestelmään kirjaudutaan sisään.
 
-Tavallinen käyttäjä voi hakea drinkkireseptejä kannasta ja ehdottaa uusien lisäämistä kantaan. Tavallinen käyttäjä voi myös lisätä drinkkejä suosikkeihinsa jotka näytetään käyttäjälle.
-Järjestelmän ylläpitäjä voi lisätä järjestelmään reseptejä joko kokonaan itse tai ehdotettuja hyväksymällä. 
+Tavallinen käyttäjä voi hakea drinkkejä kannasta ja ehdottaa uusien lisäämistä kantaan. Tavallinen käyttäjä voi myös lisätä drinkkejä suosikkeihinsa jotka näytetään käyttäjälle.
+Järjestelmän ylläpitäjä voi lisätä järjestelmään drinkkejä joko kokonaan itse tai ehdotettuja hyväksymällä. 
 
 Toimintoja:
 
   * Kirjautuminen
-  * Reseptin haku
-  * Reseptien selailu
-  * Reseptin lisäys lomakkeella
-  * Reseptin lisäys suosikkeihin
-  * Uuden reseptin ehdottaminen / ehdotuksen hyväksyminen
+  * Drinkin haku
+  * Drinkkien selailu
+  * Drinkkien lisäys lomakkeella
+  * Drinkin lisäys suosikkeihin
+  * Uuden drinkin ehdottaminen / ehdotuksen hyväksyminen
   * Käyttäjätunnuksen luominen
   * Käyttäjätietojen muutos ja tilin poisto
