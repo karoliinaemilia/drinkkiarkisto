@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+  <h1>{{drink.name}}</h1>
+  <p>{{drink.drinkType}}</p>
+
+  <form method="POST" action="{{ url_for('drinks_change', drink_id=drink.id) }}">
+    <input type="text" name="drinkType" value="{{drink.drinkType}}"/>
+    <input type="submit" value="Vaihda juomalajia"/>
+  </form>
+{% endblock %}

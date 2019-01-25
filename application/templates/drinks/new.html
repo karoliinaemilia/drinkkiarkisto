@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('drinks_create') }}">
+  <label>Nimi:</label>
+  <input type="text" name="name"/>
+  <label>Juomalaji:</label>
+  <input type="text" name="drinkType"/>
+  <input type="submit" value="Lisää uusi drinkki"/>
+</form>
+{% endblock %}

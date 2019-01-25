@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Nimi</th>
+      <th>Juomalaji</th>
+    </tr>
+    {% for drink in drinks %}
+    <tr>
+      <td><a href="{{ url_for('drinks_one', drink_id=drink.id) }}">{{ drink.name }}</a></td>
+      <td>{{ drink.drinkType }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
