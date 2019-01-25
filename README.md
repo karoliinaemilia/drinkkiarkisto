@@ -20,3 +20,7 @@ Toimintoja:
   * Uuden drinkin ehdottaminen / ehdotuksen hyväksyminen
   * Käyttäjätunnuksen luominen
   * Käyttäjätietojen muutos ja tilin poisto
+  
+### Heroku
+
+https://tsoha-drinkkisovellus.herokuapp.com/
