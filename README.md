@@ -25,6 +25,8 @@ Toimintoja:
 
 https://tsoha-drinkkisovellus.herokuapp.com/
 
+käyttäjätunnus: test, salasana: salasana
+
 
 ### Dokumentaatio
 
