@@ -24,3 +24,10 @@ Toimintoja:
 ### Heroku
 
 https://tsoha-drinkkisovellus.herokuapp.com/
+
+
+### Dokumentaatio
+
+[Tietokantakaavio](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/tietokantakaavio.md)
+
+[User Stories](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/userstories.md)
