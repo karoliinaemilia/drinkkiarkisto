@@ -2,10 +2,45 @@
   
 {% block body %}
   <h1>{{drink.name}}</h1>
-  <p>{{drink.drinkType}}</p>
+  <p>{{drink.drinktype}}</p>
 
   <form method="POST" action="{{ url_for('drinks_change', drink_id=drink.id) }}">
-    <input type="text" name="drinkType" value="{{drink.drinkType}}"/>
-    <input type="submit" value="Vaihda juomalajia"/>
+    <table>
+        <tr>
+          <td>
+            {{ form.name.label }}
+          </td>
+          <td>
+            {{ form.name(value=drink.name)}}
+          </td>
+          <td>
+            <ul>
+              {% for error in form.name.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ form.drinktype.label }}
+          </td>
+          <td>
+            {{ form.drinktype(value=drink.drinktype)}}
+          </td>
+          <td>
+              <ul>
+                {% for error in form.drinktype.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" value="Muokkaa tietoja"/>
+          </td>
+        </tr>
+      </table>
   </form>
 {% endblock %}

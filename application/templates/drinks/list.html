@@ -9,7 +9,10 @@
     {% for drink in drinks %}
     <tr>
       <td><a href="{{ url_for('drinks_one', drink_id=drink.id) }}">{{ drink.name }}</a></td>
-      <td>{{ drink.drinkType }}</td>
+      <td>{{ drink.drinktype }}</td>
+      <td><form method="POST", action="{{url_for('drink_delete', drink_id=drink.id) }}">
+        <input type="submit", value="Poista"/>
+      </form> </td>
     </tr>
     {% endfor %}
   </table>

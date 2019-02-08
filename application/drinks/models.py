@@ -7,9 +7,9 @@ class Drink(db.Model):
     onupdate=db.func.current_timestamp())
 
     name = db.Column(db.String(144), nullable=False)
-    drinkType = db.Column(db.String(144), nullable=False)
+    drinktype = db.Column(db.String(144), nullable=False)
 
 
-    def __init__(self, name, drinkType):
+    def __init__(self, name, drinktype):
         self.name = name
-        self.drinkType = drinkType
+        self.drinktype = drinktype
