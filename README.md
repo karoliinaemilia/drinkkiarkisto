@@ -51,4 +51,6 @@ Uuden drinkin lisääminen ja varsinkin siihen aineosien lisääminen oli hankal
 
 Sivutus oli odotettua helpompaa ainoa mikä ei onnistunut oli se että aineosien lisääminen on samalla sivulla listauksen kanssa joten en tiennyt miten saisin lähetettyä helposti sivutuksen uudestaan formin validoinnin epäonnistuessa joten ainesosan formi ei tällä hetkellä validoi uniikkisuutta mitä alunperin oli ajatus. Ylläpitäjän täytyy katsoa ettei lisää samaa ainetta joka sovelluksessa jo on ehdotuksia hyväksyessään.
 
-Haku toiminto ei toimi herokussa enkä osannut sitä korjata, mutta se toimii kyllä lokaalisti.
+Haku toiminto ei toimi herokussa enkä osannut sitä korjata, mutta se toimii kyllä lokaalisti. 
+
+#### Sain haku toiminnon toimimaan vihdoinkin herokussa, olin pari minuuttia myöhässä, toivottavasti ei vaikuta kauheasti pisteisiin.
