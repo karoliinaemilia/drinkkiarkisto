@@ -83,14 +83,24 @@ def add_ingredient(drink_id):
     i = Ingredient.query.get(form.name.data)
     d = Drink.query.get(drink_id)
 
+    def ingredient_query():
+        ingredients = Ingredient.query.all()
+        ingredientlist = []
+        for i in ingredients:
+            ingredientlist.append((i.id, i.name))
+        return ingredientlist
+
+    nextform = IngredientToDrinkForm()
+    nextform.name.choices = ingredient_query()
+
     if i.is_ingredient(d):
-        return render_template("drinks/new.html", message="ainesosa on jo lisätty", drink=d, ingredients = d.ingredients, ingredient_form=IngredientToDrinkForm() )
+        return render_template("drinks/new.html", message="ainesosa on jo lisätty", drink=d, ingredients = d.ingredients, ingredient_form=nextform )
         
     statement = ingredient_drink.insert().values(drink_id=drink_id, ingredient_id=i.id, amount= form.amount.data)
     db.session().execute(statement)
     db.session().commit()
 
-    return render_template("drinks/new.html", drink = d, ingredients = d.ingredients, ingredient_form = IngredientToDrinkForm())
+    return render_template("drinks/new.html", drink = d, ingredients = d.ingredients, ingredient_form = nextform)
 
 @app.route("/ingredient/delete/<ingredient_id>", methods=["POST"])
 @login_required_with_role(role="ADMIN")
