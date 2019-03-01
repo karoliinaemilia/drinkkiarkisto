@@ -3,10 +3,14 @@ from wtforms import StringField, validators, SelectField, SubmitField, Validatio
 from application.ingredients.models import Ingredient
 
 def ingredient_query():
-    return [(i.id, i.name) for i in Ingredient.query.all()]
+    ingredients = Ingredient.query.all()
+    ingredientlist = []
+    for i in ingredients:
+        ingredientlist.append((i.id, i.name))
+    return ingredientlist
 
 class IngredientToDrinkForm(FlaskForm):
-    name = SelectField(u"Ainesosa:", coerce=int, choices=ingredient_query())
+    name = SelectField("Ainesosa:", coerce=int, choices=ingredient_query())
     amount = StringField("Määrä", [validators.InputRequired()])
     submit = SubmitField("Lisää ainesosa drinkkiin")
 
