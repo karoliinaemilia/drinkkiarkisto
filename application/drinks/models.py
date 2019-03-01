@@ -45,7 +45,7 @@ class Drink(Base):
                     " ON ingredient_drink.drink_id = drink.id" 
                     " INNER JOIN ingredient ON ingredient.id = ingredient_drink.ingredient_id" 
                     " WHERE (drink.name LIKE :word OR ingredient.name LIKE :word)" 
-                    " AND drink.accepted=1 GROUP BY drink.name LIMIT 5;").params(word = "%"+keyword+"%")
+                    " AND drink.accepted=:b GROUP BY drink.name LIMIT 5;").params(word = "%"+keyword+"%", b = True)
         res = db.engine.execute(stmt)
 
         response = []
