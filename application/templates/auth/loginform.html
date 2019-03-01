@@ -4,6 +4,10 @@
 {% if error %}
 <div class="alert alert-danger">{{ error }}</div>
 {% endif %}
+<h1>Drinkkiarkisto</h1>
+</br>
+</br>
+<h3>Kirjaudu sisään</h3>
 <form method="POST" action="{{ url_for('auth_login') }}">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">
@@ -25,4 +29,10 @@
     {{ form.submit(class="btn btn-primary") }}
   </div>
 </form>
+
+</br>
+</br>
+
+<h6>Tai luo uusi tunnus</h6>
+<a class="btn btn-info" href="{{ url_for('auth_signup') }}">Luo tunnus</a>
 {% endblock %}

@@ -5,6 +5,10 @@ from application import app, db, login_required_with_role
 from application.auth.models import User
 from application.auth.forms import LoginForm, SignupForm, PasswordForm
 
+@app.route("/")
+def index():
+    return redirect(url_for("auth_login"))
+
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
     if request.method == "GET":

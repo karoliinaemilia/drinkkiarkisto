@@ -67,7 +67,6 @@ except:
 
 from application.auth.models import User
 
-from application import views
 from application.drinks import views
 from application.auth import views
 from application.ingredients import views
