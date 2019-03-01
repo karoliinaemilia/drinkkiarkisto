@@ -42,3 +42,5 @@ Suunnitelluista käyttötapauksista melkein kaikki on toteutettu lukuun ottamatt
 Uuden drinkin lisääminen ja varsinkin siihen aineosien lisääminen oli hankalampaa kuin osasin odottaa. Tällä hetkellä drinkki ensin luodaan ja sitten siihen aletaan lisäämään ainesosia. Drinkin luomisessa aineosien lisäämisessä oleva hyväksy nappi on periaatteessa käytännöllisyydeltä aivan turha sillä sitä painamalla drinkki ei talletu tietokantaan sillä se on siellä jo. Nappi on enemmänkin käyttäjälle tarkoitettu että drinkin ehdotus tuntuu onnistuneen.
 
 Sivutus oli odotettua helpompaa ainoa mikä ei onnistunut oli se että aineosien lisääminen on samalla sivulla listauksen kanssa joten en tiennyt miten saisin lähetettyä helposti sivutuksen uudestaan formin validoinnin epäonnistuessa joten ainesosan formi ei tällä hetkellä validoi uniikkisuutta mitä alunperin oli ajatus. Ylläpitäjän täytyy katsoa ettei lisää samaa ainetta joka sovelluksessa jo on ehdotuksia hyväksyessään.
+
+Haku toiminto ei toimi herokussa enkä osannut sitä korjata, mutta se toimii kyllä lokaalisti.
