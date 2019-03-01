@@ -26,14 +26,22 @@ Toimintoja:
 
 https://tsoha-drinkkisovellus.herokuapp.com/
 
-käyttäjätunnus: test, salasana: salasana
-
+Admin
+```
+käyttäjätunnus: admin, salasana: salainen1
+```
+Regular
+```
+käyttäjätunnus: eika, salasana: salainen1
+```
 
 ### Dokumentaatio
 
 [Tietokantakaavio ja CREATE TABLE -lauseet](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/tietokantakaavio.md)
 
-[User Stories](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/userstories.md)
+[User Stories ja SQL-kyselyt](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/userstories.md)
+
+[Asennus- ja käyttöohjeet](https://github.com/karoliinaemilia/drinkkiarkisto/blob/master/documentation/asennus_kayttoohje.md)
 
 ### Omat ajatukset
 
