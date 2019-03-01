@@ -92,8 +92,18 @@ def drinks_create():
     
     db.session().add(d)
     db.session().commit()
+
+    def ingredient_query():
+        ingredients = Ingredient.query.all()
+        ingredientlist = []
+        for i in ingredients:
+            ingredientlist.append((i.id, i.name))
+        return ingredientlist
+    
+    form = IngredientToDrinkForm()
+    form.name.choices = ingredient_query()
   
-    return render_template("drinks/new.html", drink = d, ingredient_form = IngredientToDrinkForm())
+    return render_template("drinks/new.html", drink = d, ingredient_form = form)
 
 @app.route("/drinks/<user_id>/<drink_id>", methods=["POST"])
 @login_required
