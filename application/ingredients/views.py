@@ -58,7 +58,7 @@ def accept_ingredient(ingredient_id):
 
     i = Ingredient.query.get(ingredient_id)
 
-    d.accepted = True
+    i.accepted = True
 
     db.session().commit()
 
@@ -84,7 +84,7 @@ def add_ingredient(drink_id):
     d = Drink.query.get(drink_id)
 
     def ingredient_query():
-        ingredients = Ingredient.query.all()
+        ingredients = Ingredient.query.filter_by(accepted = True)
         ingredientlist = []
         for i in ingredients:
             ingredientlist.append((i.id, i.name))

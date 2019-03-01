@@ -94,7 +94,7 @@ def drinks_create():
     db.session().commit()
 
     def ingredient_query():
-        ingredients = Ingredient.query.all()
+        ingredients = Ingredient.query.filter_by(accepted = True)
         ingredientlist = []
         for i in ingredients:
             ingredientlist.append((i.id, i.name))
