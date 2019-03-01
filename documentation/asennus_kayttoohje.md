@@ -77,3 +77,7 @@ poistaa jonkin käyttäjän profiilin.
 
 Ylläpitäjä voi navigoida ehdotuksien listaukseen yläpalkin Tarkastele ehdotettuja drinkkejä ja ainesosia -linkin kautta. Tällä sivulla
 ylläpitäjä näkee kaikki ehdotetut drinkit ja ainesosat ja voi joko hyväksyä tai poistaa ne. Jos ehdotuksia ei ole näkyy sivulla tieto siitä.
+
+### Drinkkien ja ainesosien poisto
+
+Ylläpitäjä voi poistaa ainesosan tai drinkin niiden listauksessa näkyvistä poisto napeista.
