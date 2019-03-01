@@ -7,10 +7,10 @@
 #### Tavallisena käyttäjänä haluan
 
 * pystyä kirjautumaan sisään
-* tarvittaessa muuttaa käyttäjätietojani tai poistamaan tilini
+* tarvittaessa muuttaa salasanani ja poistamaan tilini
 * selata drinkkejä sovelluksessa
-* hakea drinkkejä hakusanalla tai osa-aineiden mukaan
-* järjestää drinkit aakkosjärjestykseen, ainesosien mukaan tai juomalajin mukaan
+* hakea drinkkejä hakusanalla nimen tai osa-aineiden mukaan
+* järjestää drinkit aakkosjärjestykseen, ainesosien mukaan tai juomalajin mukaan (ei toteutettu)
 * ehdottaa uutta drinkkiä lisättäväksi
 * lisätä drinkin omiin suosikkeihini
 
@@ -18,3 +18,5 @@
 
 * lisäämään järjestelmään drinkkejä
 * hyväksymään muiden käyttäjien ehdottamia drinkkejä
+* antamaan käyttäjälle admin oikeudet
+* poistamaan drinkkejä ja ainesosia
