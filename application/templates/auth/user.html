@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>{{user.name}}
+{% if user.is_admin() %}
+<span class="badge badge-info">Admin</span>
+{% endif %}
+</h1>
+
+{% if favorite_drinks %}
+<h2>Suosikki drinkit</h2>
+<table class="table">
+{% for drink in favorite_drinks %}
+<tr>
+<td>
+  {{drink.name}}
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if favorite_ingredients %}
+<h2>Top 3 ainesosat</h2>
+<table class="table">
+<tr>
+  <th>Ainesosa</th>
+  <th>Monessako drinkissä ainesosa esiintyy</th>
+</tr>
+{% for ingredient in favorite_ingredients %}
+<tr>
+  <td>{{ingredient.ingredient}}</td>
+  <td>{{ ingredient.frequency }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+
+{% if current_user == user %}
+<h4>Vaihda salasana</h4>
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+{% if message %}
+<div class="alert alert-info">{{ message }}</div>
+{% endif %}
+<form method="POST" action="{{ url_for('password_change', user_id=user.id) }}">
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">
+      {{ form.password.label }}
+    </label>
+    <div class="col-sm-10">
+      {{ form.password(class="form-control") }}
+    </div>
+    {% for error in form.password.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">
+      {{ form.new_password.label }}
+    </label>
+    <div class="col-sm-10">
+      {{ form.new_password(class="form-control") }}
+    </div>
+    {% for error in form.new_password.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+  </div>
+  <div class="col-sm-2 form-group row">
+    {{ form.submit(class="btn btn-primary")}}
+  </div>
+</form>
+{% endif %}
+
+<form method="POST", action="{{url_for('user_delete', user_id=user.id) }}">
+  <button type="submit" class="btn btn-danger">Poista tili</button>
+</form>
+
+
+{% endblock %}

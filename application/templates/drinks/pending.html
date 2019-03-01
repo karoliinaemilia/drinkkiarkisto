@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if drinks %}
+<h4>Ehdotetut drinkit</h4>
+<table class="table">
+    {% for drink in drinks %}
+    <tr>
+        <td>
+            <h5>{{ drink.name }}</h5>
+            <h7>{{ drink.drinktype_name() }}</h7>
+            {% if drink.ingredients.first() != None %}
+            <table class="table">
+              {% for ingredient in drink.ingredients %}
+              <tr>
+                <td>
+                  {{ ingredient.name }}
+                </td>
+                <td>
+                  {{ ingredient.get_amount(ingredient, drink) }}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% else %}
+            <p>Ei ainesosia</p>
+            {% endif %}
+            Ohjeet: <p>{{ drink.instructions }}</p>
+        </td>
+        <td>
+          <form method="POST", action="{{url_for('accept_drink', drink_id=drink.id) }}">
+            <button type="submit" class="btn btn-success">Hyväksy ehdotus</button>
+          </form>
+        </td>
+        <td>
+          <form method="POST", action="{{url_for('decline_drink', drink_id=drink.id) }}">
+            <button type="submit" class="btn btn-danger">Poista ehdotus</button>
+          </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<nav arial-label="...">
+    <ul class = "pagination">
+    {% if drink_prev_url %}
+      <li class = "page-item">
+        <a class="page-link" href = "{{ drink_prev_url }}" tabindex="-1">Previous</a>
+      </li>
+    {% endif %}
+    {% if drink_next_url %}
+      <li class="page-item">
+        <a class="page-link" href="{{ drink_next_url }}">Next</a>
+      </li>
+    {% endif %}
+    </ul>
+  </nav>
+{% else %}
+<h2>Ei hyväksymistä odottavia drinkkejä</h2>
+{% endif %}
+{% if ingredients %}
+<h4>Ehdotetut ainesosat</h4>
+<table class="table">
+    {% for ingredient in ingredients %}
+    <tr>
+        <td>
+            <h7>{{ ingredient.name }}</h7>
+        </td>
+        <td>
+          <form method="POST", action="{{url_for('accept_ingredient', ingredient_id=ingredient.id) }}">
+            <button type="submit" class="btn btn-success">Hyväksy ehdotus</button>
+          </form>
+        </td>
+        <td>
+          <form method="POST", action="{{url_for('decline_ingredient', ingredient_id=ingredient.id) }}">
+            <button type="submit" class="btn btn-danger">Poista ehdotus</button>
+          </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<nav arial-label="...">
+    <ul class = "pagination">
+    {% if ingredient_prev_url %}
+      <li class = "page-item">
+        <a class="page-link" href = "{{ ingredient_prev_url }}" tabindex="-1">Previous</a>
+      </li>
+    {% endif %}
+    {% if ingredient_next_url %}
+      <li class="page-item">
+        <a class="page-link" href="{{ ingredient_next_url }}">Next</a>
+      </li>
+    {% endif %}
+    </ul>
+  </nav>
+{% else %}
+<h2>Ei hyväksymistä odottavia ainesosia</h2>
+{% endif %}
+{% endblock %}

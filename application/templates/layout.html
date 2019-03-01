@@ -9,7 +9,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Drinkkiarkisto</a>
+      <a class="navbar-brand" href="{{url_for('drinks_search') }}">Drinkkiarkisto</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,13 +20,37 @@
             <a class="nav-link" href="{{url_for('drinks_index') }}">Drinkkilistaus</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('drinks_form') }}">Lisää uusi drinkki</a>
+            <a class="nav-link" href="{{ url_for('drinks_form') }}">
+              {% if current_user.is_admin() %}
+              Lisää drinkki
+              {% else %}
+              Ehdota uutta drinkkiä
+              {% endif %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('ingredients_form') }}">
+              Ainesosat
+            </a>
+          </li>
+          {% if current_user.is_admin() %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('drinks_pending') }}">Tarkastele ehdotettuja drinkkejä ja ainesosia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users_index') }}">Käyttäjä listaus</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user_profile', user_id=current_user.id) }}">Oma profiili</a>
           </li>
         </ul>
         {% endif %}
         <div class="form-inline mt-2 mt-md-0">
           {% if current_user.is_authenticated %}
-          <a href="{{ url_for('auth_logout') }}">Kirjautunut nimellä {{ current_user.name }} -- Kirjaudu ulos</a>
+          <font color="grey">Kirjautunut nimellä {{ current_user.name }}</font>
+          &emsp;
+          <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
           {% else %}
           <a href="{{ url_for('auth_signup') }}">Luo tunnus</a>
           &emsp;

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+{% if message %}
+<div class="alert alert-info">{{ message }}</div>
+{% endif %}
+<table class="table">
+  {% for ingredient in ingredients %}
+    <tr>
+      <td>
+          {{ ingredient.name }}
+      </td>
+      {% if current_user.is_admin() %}
+      <td>
+        <form method="POST", action="{{url_for('ingredient_delete', ingredient_id=ingredient.id) }}">
+          <button type="submit" class="btn btn-danger">Poista</button>
+        </form> 
+      </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>
+
+<nav arial-label="...">
+  <ul class = "pagination">
+  {% if prev_url %}
+    <li class = "page-item">
+      <a class="page-link" href = "{{ prev_url }}" tabindex="-1">Previous</a>
+    </li>
+  {% endif %}
+  {% if next_url %}
+    <li class="page-item">
+      <a class="page-link" href="{{ next_url }}">Next</a>
+    </li>
+  {% endif %}
+  </ul>
+</nav>
+
+</br>
+<form method="POST" action="{{ url_for('ingredients_create') }}">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      {{ form.name.label }}
+    </label>
+    <div class="col-sm-10">
+      {{ form.name(class="form-control") }}
+    </div>
+    {% for error in form.name.errors %}
+        <span class="badge badge-danger">{{ error }}</span>
+        </br>
+    {% endfor %}
+  </div>
+  <div class="col-sm-2 form-group row">
+    {{ form.submit(class="btn btn-primary")}}
+  </div>
+</form>
+{% endblock %}

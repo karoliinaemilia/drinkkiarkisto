@@ -1,19 +1,43 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+{% if message %}
+<div class="alert alert-info">{{ message }}</div>
+{% endif %}
+  <table class="table">
     <tr>
-      <th>Nimi</th>
-      <th>Juomalaji</th>
+      <th scope="col">Nimi</th>
+      <th scope="col">Juomalaji</th>
     </tr>
     {% for drink in drinks %}
     <tr>
       <td><a href="{{ url_for('drinks_one', drink_id=drink.id) }}">{{ drink.name }}</a></td>
-      <td>{{ drink.drinktype }}</td>
-      <td><form method="POST", action="{{url_for('drink_delete', drink_id=drink.id) }}">
-        <input type="submit", value="Poista"/>
-      </form> </td>
+      <td>{{ drink.drinktype_name() }}</td>
+      <td>
+        <form method="POST", action="{{url_for('add_favorite', drink_id=drink.id, user_id=current_user.id) }}">
+          <button type="submit" class="btn btn-success">Lisää suosikkeihin</button>
+        </form>
+      </td>
+      <td>
+        <form method="POST", action="{{url_for('drink_delete', drink_id=drink.id) }}">
+        <button type="submit" class="btn btn-danger">Poista</button>
+        </form> 
+      </td>
     </tr>
     {% endfor %}
   </table>
+  <nav arial-label="...">
+      <ul class = "pagination">
+      {% if prev_url %}
+        <li class = "page-item">
+          <a class="page-link" href = "{{ prev_url }}" tabindex="-1">Previous</a>
+        </li>
+      {% endif %}
+      {% if next_url %}
+        <li class="page-item">
+          <a class="page-link" href="{{ next_url }}">Next</a>
+        </li>
+      {% endif %}
+      </ul>
+    </nav>
 {% endblock %}

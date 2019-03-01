@@ -2,64 +2,38 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('auth_signup') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.name.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-   </tr>
-    <tr>
-      <td>
-          {{ form.username.label }}
-      </td>
-      <td>
-	      {{ form.username }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.username.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	    {{ form.password.label }}
-      </td>
-      <td>
-	    {{ form.password }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.password.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-        <td>
-          {{ form.confirmation.label }}
-        </td>
-        <td>
-          {{ form.confirmation }}
-        </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Luo tunnus"/>
-      </td>
-    </tr>
+  <div class="form-group">
+    <label class="col-form-label">
+      {{ form.name.label }}
+    </label>
+    {{ form.name(class="form-control") }} 
+    {% for error in form.name.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      <br/>
+    {% endfor %}
+    </ul>
+    <label class="col-form-label">
+      {{ form.username.label }}
+    </label>
+    {{ form.username(class="form-control") }}
+    {% for error in form.username.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+    <label class="col-form-label">
+      {{ form.password.label }}
+    </label>
+    {{ form.password(class="form-control") }}
+    {% for error in form.password.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+    <label class="col-form-label">
+      {{ form.confirmation.label }}
+    </label>
+    {{ form.confirmation(class="form-control") }}
+    </br>
+    {{ form.submit(class="btn btn-primary") }}
+  </div>
 </form>
 {% endblock %}

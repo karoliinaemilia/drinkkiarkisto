@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+{% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+{% endif %}
+<h1>Drinkkiarkisto</h1>
+</br>
+<h4>Etsi drinkkejä nimen tai ainesosan perusteella</h4>
+</br>
+<div class="alert alert-info">
+    Hakutuloksista näytetään 5 ensimmäistä eli käytä tarkkoja hakusanoja.
+</div>
+<form method="POST" action="{{ url_for('search_drink') }}">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      {{ form.keyword.label }}
+    </label>
+    <div class="col-sm-10">
+      {{ form.keyword(class="form-control", value = "") }}
+    </div>
+  </div>
+  <div class="col-sm-2 form-group row">
+    {{ form.submit(class="btn btn-primary")}}
+  </div>
+</form>
+
+{% if drinks %}
+<table class="table">
+  <tr>
+      <th>Drinkki</th>
+      <th>Ainesosat</th>
+  </tr>
+  {% for drink in drinks %}
+  <tr>
+    <td>
+      <a href="{{ url_for('drinks_one', drink_id=drink.id) }}">{{ drink.name }}</a>
+    </td>
+    <td>
+    <table class="table">
+      {% for ingredient in drink.ingredients %}
+      <tr>
+        <td>{{ ingredient.name }}</td>
+      </tr> 
+      {% endfor %} 
+    </table>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+</br>
+<h4>Tai voit navigoida...</h4>
+<a class="btn btn-info" href="{{url_for('drinks_index') }}">Drinkkilistaukseen</a>
+<a class="btn btn-info" href="{{ url_for('ingredients_form') }}">Aineosien listaukseen</a>
+<a class="btn btn-info" href="{{ url_for('user_profile', user_id=current_user.id) }}">Omaan profiiliin</a>
+{% endblock %}

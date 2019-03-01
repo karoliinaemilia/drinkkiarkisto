@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table class="table">
+  {% for user in users %}
+    <tr>
+      <td>
+          {{ user.name }}
+      </td>
+      <td>
+          {{  user.username  }}
+      </td>
+      {% if user.is_admin() %}
+      <td>
+          <h2><span class="badge badge-info">Admin</span></h2>
+      </td>
+      {% elif current_user.is_admin() %}
+      <td>
+        <form method="POST", action="{{url_for('make_admin', user_id=user.id) }}">
+          <button type="submit" class="btn btn-primary">Anna admin oikeudet</button>
+        </form>
+      </td>
+      {% endif %}
+      <td>
+        <form method="POST", action="{{url_for('user_delete', user_id=user.id) }}">
+          <button type="submit" class="btn btn-danger">Poista tili</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+<nav arial-label="...">
+    <ul class = "pagination">
+    {% if prev_url %}
+      <li class = "page-item">
+        <a class="page-link" href = "{{ prev_url }}" tabindex="-1">Previous</a>
+      </li>
+    {% endif %}
+    {% if next_url %}
+      <li class="page-item">
+        <a class="page-link" href="{{ next_url }}">Next</a>
+      </li>
+    {% endif %}
+    </ul>
+  </nav>
+
+
+{% endblock %}

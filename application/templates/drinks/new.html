@@ -1,43 +1,108 @@
 {% extends "layout.html" %}
   
 {% block body %}
+{% if message %}
+<div class="alert alert-info">{{ message }}</div>
+{% endif %}
+{% if drink %}
+<div class="alert alert-info">Lisää yksi kerrallaan drinkkiisi kaikki ainesosat ja niiden määrät, jos et tarkistanut ennen drinkin luomista että kaikki ainesosat löytyvät ainesosien listalta sivun alaosassa on linkki uuden 
+  ainesosan ehdottamiseen, mutta joudut aloittamaan drinkin kokoamisen alusta.
+  </br>
+</div>
+  <h3>{{ drink.name }}</h3>
+  <h6>{{drink.drinktype_name() }}</h6>
+  <p>{{ drink.instructions }}</p>
+  {% if ingredients %}
+    <h3>Lisätyt ainesosat</h3>
+    <ul>
+    {% for ingredient in ingredients %}
+      <li>{{ingredient.name}}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  <form method="POST" action="{{ url_for('add_ingredient', drink_id=drink.id) }}">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        {{ ingredient_form.name.label }}
+      </label>
+      <div class="col-sm-10">
+        {{ ingredient_form.name(class="form-control") }}
+      </div>
+      {% for error in ingredient_form.name.errors %}
+        <span class="badge badge-danger">{{ error }}</span>
+        </br>
+      {% endfor %}
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"> 
+        {{ ingredient_form.amount.label }}
+      </label>
+      <div class="col-sm-10">
+        {{ ingredient_form.amount(class="form-control") }}
+      </div>
+      {% for error in ingredient_form.amount.errors %}
+        <span class="badge badge-danger">{{ error }}</span>
+        </br>
+      {% endfor %}
+    </div>
+    <div class="col-sm-2 form-group row">
+      {{ ingredient_form.submit(class="btn btn-primary")}}
+    </div>
+  </form>
+
+  <a href="{{ url_for('drinks_message') }}" class="btn btn-success">Hyväksy</a>
+
+  </br>
+  </br>
+  </br>
+  
+  <a href="{{ url_for('ingredients_form')}}" class="btn btn-info"> Lisää uusi ainesosa </a>
+
+{% else %}
+<div class="alert alert-info">Tarkista ennen aloittamista että ehdottamasi drinkin kaikki ainesosat
+    löytyvät <a href="{{ url_for('ingredients_form') }}">ainesosien sivulta</a>. Kun olet antanut drinkille nimen, valinnut
+    juomalajin ja kirjoittanut ohjeet paina lisää drinkkiä nappia ja sinut ohjataan ainesosien lisäämiseen. 
+  </div>
 <form method="POST" action="{{ url_for('drinks_create') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.name.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.drinktype.label }}
-      </td>
-      <td>
-        {{ form.drinktype }}
-      </td>
-      <td>
-          <ul>
-            {% for error in form.drinktype.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Lisää drinkki"/>
-      </td>
-    </tr>
-  </table>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+    {{ form.name.label }}
+    </label>
+    <div class="col-sm-10">
+    {{ form.name(class="form-control") }}
+    </div>
+    {% for error in form.name.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"> 
+    {{ form.drinktype.label }}
+    </label>
+    <div class="col-sm-10">
+    {{ form.drinktype(class="form-control") }}
+    </div>
+    {% for error in form.drinktype.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"> 
+      {{ form.instructions.label }}
+    </label>
+    <div class="col-sm-10">
+      {{ form.instructions(class="form-control") }}
+    </div>
+    {% for error in form.instructions.errors %}
+      <span class="badge badge-danger">{{ error }}</span>
+      </br>
+    {% endfor %}
+  </div>
+  <div class="col-sm-2 form-group row">
+    {{ form.submit(class="btn btn-primary")}}
+  </div>
 </form>
+{% endif %}
 {% endblock %}
